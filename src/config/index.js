@@ -1,5 +1,6 @@
 
 
 export default {
-    mysql : require('./mysql')
+    mysql : require('./mysql').default,
+    debug : require('./debug').default,
 }

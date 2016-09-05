@@ -1,11 +1,9 @@
 
 import config from './config'
-
 import mysql from 'mysql'
-
 import getter from './getter'
 
-export default () => {
+export default (() => {
 
     const connMysql = mysql.createConnection( config.mysql )
 
@@ -15,8 +13,9 @@ export default () => {
         mysql : connMysql,
     }
 
+    console.log('whty')
+
     getter({ config, tools })
 
-    return
 
-}
+})()

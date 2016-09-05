@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "env DEBUG=\"eve:* mysql:*\" node index.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
   },
   "homepage": "https://github.com/xonlly/eve-trading#readme",
   "dependencies": {
+    "debug": "^2.2.0",
     "mysql": "^2.11.1",
     "request": "^2.74.0",
     "socket.io": "^1.4.8"
