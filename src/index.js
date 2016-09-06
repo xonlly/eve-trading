@@ -13,7 +13,6 @@ export default (() => {
         mysql : connMysql,
     }
 
-    console.log('whty')
 
     getter({ config, tools })
 
