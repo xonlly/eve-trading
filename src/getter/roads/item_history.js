@@ -11,7 +11,7 @@ const zlib = require('zlib');
 
 export default class ItemHistory extends base {
 
-    constructor({ config }) {
+    constructor({ config, tools }) {
 
         super( ...arguments )
 
@@ -20,9 +20,13 @@ export default class ItemHistory extends base {
         this.debug = config.debug
         this.debug.roads('ready')
 
+        this.tools = tools
+
         this.importFromMarketData([
             /* Regions */
             this.region.getByName('Heimatar').id,
+            //this.region.getByName('Heimatar').id,
+
         ])
 
     }
@@ -56,8 +60,41 @@ export default class ItemHistory extends base {
 
     insert( r, files ) {
         return new Promise(( resolve, reject ) => {
-            console.log('cou', files)
-            /* Work in progress ... */
+            fs.readFile(
+                path.join( __dirname, 'tempory', `${ r.id }.txt` ),
+                'utf8',
+                ( err, request ) => {
+                    if ( err )
+                        return reject( err )
+
+                    var tasks = Promise.resolve()
+
+                    request.split("\n")
+                        .filter( l => l != '' )
+                        .map( line => line.replace('INSERT INTO', 'INSERT IGNORE INTO'))
+                        .forEach( line => {
+
+                        tasks = tasks.then(
+                            () => new Promise((r, e) => {
+                                this.tools.mysql.query( line, ( err, result ) => {
+                                    if ( err )
+                                        return e( err )
+
+                                    return r( result )
+                                } )
+                            } )
+                        )
+                    } )
+
+                    tasks
+                        .then( () => resolve() )
+                        .catch( err => reject( err ))
+
+
+
+
+                }
+            )
         })
     }
 
@@ -74,8 +111,8 @@ export default class ItemHistory extends base {
                 tasks = tasks
                     .then(() => this.download( r )) // For tests this line is comment ( no spam download on source )
                     .then(() => wait( 500 )) /* wait file close cursor */
-                    //.then(() => this.unGz(`${ r.id }.txt.gz`))
-                    .then(files => this.insert( r, files ))
+                    .then(() => this.insert( r ))
+                    .then(() => wait( 1000 ))
 
             } )
 

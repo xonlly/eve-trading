@@ -2,8 +2,8 @@
 export default {
 
     host : '127.0.0.1',
-    db : 'eve-trading',
+    database : 'eve-trading',
     user : 'root',
-    pass : '',
+    password : '',
 
 }
