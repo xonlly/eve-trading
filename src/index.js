@@ -14,7 +14,9 @@ export default (() => {
     }
 
 
-    getter({ config, tools })
+    tools.getters = getter({ config, tools })
+
+
 
 
 })()

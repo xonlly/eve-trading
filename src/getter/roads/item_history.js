@@ -21,9 +21,8 @@ export default class ItemHistory extends base {
         this.debug.roads('ready')
 
         this.tools = tools
-
+/*
         this.importFromMarketData([
-            /* Regions */
             this.region.getByName('Heimatar').id,
             this.region.getByName('Devoid').id,
             this.region.getByName('Tash-Murkon').id,
@@ -40,7 +39,7 @@ export default class ItemHistory extends base {
             this.region.getByName('Placid').id,
             this.region.getByName('The Citadel').id,
 
-        ])
+        ])*/
 
     }
 
@@ -122,7 +121,7 @@ export default class ItemHistory extends base {
                 this.debug.roads('prepare', r.link)
 
                 tasks = tasks
-                    //.then(() => this.download( r )) // For tests this line is comment ( no spam download on source )
+                    .then(() => this.download( r )) // For tests this line is comment ( no spam download on source )
                     .then(() => wait( 500 )) /* wait file close cursor */
                     .then(() => this.insert( r ))
                     .then(() => wait( 1000 ))
