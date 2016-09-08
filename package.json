@@ -4,29 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+     "test": "mocha --compilers js:babel-register --timeout 16000 --slow 1000 test/functional/index.js",
     "start": "env DEBUG=\"eve:* mysql:*\" node index.js",
-    "test" : "mocha --compilers js:babel-register --timeout 6000 --slow 1000 test/functional/index.js",
-    "test:functional:coverage"  : "nyc --require babel-register mocha --timeout 6000 test/functional/index.js",
-    "coverage:report"           : "nyc report --reporter=text-lcov > coverage.lcov && codecov -t $CODECOV_TOKEN"
+    "test:functional:coverage": "nyc --require babel-register mocha --timeout 16000 test/functional/index.js",
+    "coverage:report": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t $CODECOV_TOKEN"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xonlly/eve-trading.git"
   },
   "devDependencies": {
-    "commander": "~2.9.0",
-    "mocha": "~3.0.0",
-    "webpack": "~1.13.2",
-    "babel-loader": "~6.2.5",
-    "babel-register": "~6.11.6",
-    "babel-core": "~6.13.2",
     "babel-cli": "~6.11.4",
+    "babel-core": "~6.13.2",
+    "babel-loader": "~6.2.5",
     "babel-preset-es2015": "~6.13.2",
     "babel-preset-react": "~6.11.1",
+    "babel-preset-stage-1": "~6.13.0",
+    "babel-register": "~6.11.6",
     "codecov": "^1.0.1",
+    "commander": "~2.9.0",
+    "expect": "^1.20.2",
+    "mocha": "~3.0.0",
     "nyc": "^8.1.0",
-    "babel-preset-stage-1": "~6.13.0"
+    "webpack": "~1.13.2"
   },
   "author": "xonlly <contact@devteck.eu>",
   "license": "ISC",
@@ -36,6 +36,7 @@
   "homepage": "https://github.com/xonlly/eve-trading#readme",
   "dependencies": {
     "debug": "^2.2.0",
+    "expect": "^1.20.2",
     "mysql": "^2.11.1",
     "request": "^2.74.0",
     "request-progress": "^2.0.1",

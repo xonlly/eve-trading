@@ -26,7 +26,7 @@ build:
         packages: gcc-4.9 g++-4.9 uuid-dev libssl-dev libtool libtool-bin
 
     - script:
-        name: wtf
+        name: For ZMQ module
         code: |
             export CXX=g++-4.9
             export CC=gcc-4.9
@@ -59,7 +59,7 @@ build:
 
     # A step that executes `npm install` command
     - script:
-        name: install
+        name: install modules
         code: env LD_LIBRARY_PATH=$LDHACK/lib LD_RUN_PATH=$LDHACK/lib PKG_CONFIG_PATH=$LDHACK/lib/pkgconfig LDFLAGS=-L$LDHACK/lib CFLAGS=-I$LDHACK/lib/include
     #
     - npm-install
