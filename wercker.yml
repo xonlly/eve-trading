@@ -31,6 +31,7 @@ build:
             export CXX=g++-4.9
             export CC=gcc-4.9
             mkdir ldlocal
+            export SODIUM=1.0.5
             export LDHACK=`pwd`/ldlocal
             export LDFLAGS=-L$LDHACK/lib
             export CFLAGS=-I$LDHACK/include
