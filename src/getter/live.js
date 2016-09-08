@@ -26,7 +26,7 @@ const parse = data => {
 
     data.version != '0.1' && log('Warning new data version', data.version)
 
-    return data.rowsets.map( r => {
+    data.rowsets = data.rowsets.map( r => {
         r.rows = r.rows.map( row => {
 
             let newRow = {}
@@ -40,6 +40,7 @@ const parse = data => {
         return r
     })
 
+    return data
 
 }
 
