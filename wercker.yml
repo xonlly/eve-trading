@@ -23,7 +23,7 @@ build:
   # http://devcenter.wercker.com/docs/steps/index.html
   steps:
     - install-packages:
-            gcc-4.9 g++-4.9 uuid-dev libssl-dev
+        packages: gcc-4.9 g++-4.9 uuid-dev libssl-dev
 
     # A step that executes `npm install` command
     - npm-install
