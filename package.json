@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-     "test": "mocha --compilers js:babel-register --timeout 16000 --slow 1000 test/functional/index.js",
+    "test": "mocha --compilers js:babel-register --timeout 16000 --slow 1000 test/functional/index.js",
     "start": "env DEBUG=\"eve:* mysql:*\" node index.js",
     "test:functional:coverage": "nyc --require babel-register mocha --timeout 16000 test/functional/index.js",
     "coverage:report": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t $CODECOV_TOKEN"
@@ -38,6 +38,7 @@
     "debug": "^2.2.0",
     "expect": "^1.20.2",
     "mysql": "^2.11.1",
+    "node-fetch": "^1.6.0",
     "request": "^2.74.0",
     "request-progress": "^2.0.1",
     "socket.io": "^1.4.8",

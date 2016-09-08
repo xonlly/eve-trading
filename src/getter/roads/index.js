@@ -6,4 +6,5 @@ export default ( ...args ) => ({
     region_id:     new (require('./region_id').default)( ...args ),
     solar_systems: new (require('./solar_systems').default)( ...args ),
     station_rank:  new (require('./station_rank').default)( ...args ),
+    market:        new (require('./market').default)( ...args ),
 })
