@@ -38,6 +38,7 @@ build:
             export LD_LIBRARY_PATH=$LDHACK/lib
             export PKG_CONFIG_PATH=$LDHACK/lib/pkgconfig
             echo $PKG_CONFIG_PATH
+            echo "b: $(command -v libtool) c: $(command -v libtoolize)"
             wget http://download.zeromq.org/zeromq-$ZMQ.tar.gz
             tar xzvf zeromq-$ZMQ.tar.gz
             wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.5.tar.gz
