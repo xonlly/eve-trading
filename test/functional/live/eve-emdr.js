@@ -15,20 +15,25 @@ describe('eve-emdr',function(){
 
     it('try parse data', function ( done ) {
 
-        let isDone = false
+        var demoData = { version: '0.1',
+          uploadKeys: [ { name: 'EMDR', key: 'CREST' } ],
+          rowsets:
+           [ { typeID: 17889,
+               rows: [],
+               regionID: 10000013,
+               generatedAt: '2016-09-08T20:00:14.616867Z' },
+             { typeID: 2281,
+               rows: [],
+               regionID: 10000013,
+               generatedAt: '2016-09-08T20:00:14.616867Z' } ],
+          resultType: 'orders',
+          generator: { version: '0.1.0', name: 'eve-marketdata.com' }
+      }
 
-        live.init()
-        live.listen( r => {
+      const parsed = live.parse( demoData )
 
-            if ( r.length && !isDone ) {
+      done()
 
-
-                live.disconnect()
-                isDone = true
-                done()
-            }
-
-        } )
     })
 
 })

@@ -51,9 +51,9 @@ const disconnect = () => new Promise((resolve, reject) => {
 const listen = callback =>
     sock.on('message', msg =>
         zlib.unzip( msg, ( err, b ) =>
-            callback( parse( JSON.parse( b.toString() ) ) )
+            callback( JSON.parse( b.toString() ) )
         )
     )
 
 
-module.exports = { init, listen, disconnect }
+module.exports = { init, listen, parse, disconnect }
