@@ -23,7 +23,7 @@ build:
   # http://devcenter.wercker.com/docs/steps/index.html
   steps:
     - install-packages:
-        packages: gcc-4.9 g++-4.9 uuid-dev libssl-dev libtool
+        packages: gcc-4.9 g++-4.9 uuid-dev libssl-dev libtool libtool-bin
 
     - script:
         name: wtf
