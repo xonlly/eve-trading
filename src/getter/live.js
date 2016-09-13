@@ -5,16 +5,20 @@ import debug    from 'debug'
 const sock = zmq.socket('sub');
 const log  = debug('eve:live')
 
-const init = ( tcp, sub = '' ) => new Promise((resolve, reject) => {
+const init = ( { tools } ) => new Promise((resolve, reject) => {
 
-    tcp = tcp || 'tcp://relay-us-east-1.eve-emdr.com:8050'
+    const tcp = 'tcp://relay-us-east-1.eve-emdr.com:8050'
 
     sock.connect( tcp );
 
-    sock.subscribe( sub );
+    sock.subscribe( '' );
 
     log('Worker connected to port 8050');
     log('On addr', tcp)
+
+    listen( d => {
+        tools.ee.emit('relay-us-east-1', parse( d ) )
+    })
 
     resolve()
 

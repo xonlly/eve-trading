@@ -6,4 +6,5 @@ export default {
     roads:  debug('eve:getter:roads'),
     getter: debug('eve:getter'),
     base:   debug('eve:base'),
+    insert: debug('eve:insert'),
 }

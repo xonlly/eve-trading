@@ -14,8 +14,6 @@ export default class Base {
 
     }
 
-
-
     getMarketOrdersAll( regions ) {
         return new Promise((resolve, reject) => {
 

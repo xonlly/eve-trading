@@ -4,10 +4,12 @@ import roads from './roads'
 import live from './live'
 
 
-live.init()
+export default ( ...args ) => {
 
+    live.init( ...args )
 
-export default ( ...args ) => ({
-    roads : roads( ...args ),
-    live
-})
+    return {
+        roads : roads( ...args ),
+        live
+    }
+}

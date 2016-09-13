@@ -84,26 +84,14 @@ export default class ItemHistory extends base {
                     request.split("\n")
                         .filter( l => l != '' )
                         .map( line => line.replace('INSERT INTO', 'INSERT IGNORE INTO'))
-                        .forEach( line => {
-
-                        tasks = tasks.then(
-                            () => new Promise((r, e) => {
-                                this.tools.mysql.query( line, ( err, result ) => {
-                                    if ( err )
-                                        return e( err )
-
-                                    return r( result )
-                                } )
-                            } )
+                        .forEach( line =>
+                            tasks = tasks.then( () => this.tools.mysql.query( line ) )
                         )
                     } )
 
                     tasks
                         .then( () => resolve() )
                         .catch( err => reject( err ))
-
-
-
 
                 }
             )
